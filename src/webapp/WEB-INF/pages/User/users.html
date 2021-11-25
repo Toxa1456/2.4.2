@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<div>
+    <div>
+
+    </div>
+    <h2>Users</h2>
+    <div>
+        <tr th:if="${Users.isEmpty()}">
+            <td> No User Available </td>
+        </tr>
+    </div>
+    <table  border="2px black" style="width:70%">
+        <tr>
+            <th> Name </th>
+            <th> LastName </th>
+            <th> email </th>
+        </tr>
+        <tbody>
+        <tr th:each="user : ${Users}">
+            <td th:text="${user.getFirstName()}"></td>
+            <td th:text="${user.getLastName()}"></td>
+            <td th:text="${user.getEmail()}"></td>
+            <td>
+                <form action="/user/rename" method="get" style="width: 100%">
+                    <input type="hidden" name="id" th:value="${user.getId()}">
+                    <input type="submit" value="change" style="width: 100%">
+                </form>
+            </td>
+            <td>
+                <form action="/user/delete" method="get" style="width: 100%">
+                    <input type="hidden" name="id" th:value="${user.getId()}">
+                    <input type="submit" value="delete" style="width: 100%">
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p></p>
+    <form action="/users" method="get" style="width: 20%">
+        <fieldset>
+            <legend>Add User</legend>
+            <p><label for="firstName">Name</label><input name="firstName" id="firstName" type="text"></p>
+            <p><label for="lastName">LastName</label><input name="lastName" id="lastName" type="text"></p>
+            <p><label for="email">Email</label><input name="email" id="email" type="text"></p>
+            <p><input type="submit" value="add" style="width: 100px"> <input type="reset" value="reset" style="width: 100px"></p>
+        </fieldset>
+    </form>
+</div>
+
+
+
+</body>
+</html>

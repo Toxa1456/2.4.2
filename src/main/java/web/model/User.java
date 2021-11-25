@@ -10,10 +10,6 @@ public class User {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
 
-   @OneToOne (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-   @JoinColumn (name = "car_id")
-   private Car car;
-
    @Column(name = "name")
    private String firstName;
 
@@ -29,14 +25,6 @@ public class User {
       this.firstName = firstName;
       this.lastName = lastName;
       this.email = email;
-   }
-
-   public Car getCar() {
-      return car;
-   }
-
-   public void setCar(Car car) {
-      this.car = car;
    }
 
    public Long getId() {

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Change</title>
+</head>
+<body>
+<table  border="2px black" style="width:70%">
+    <tr>
+        <th> Name </th>
+        <th> LastName </th>
+        <th> email </th>
+    </tr>
+    <tbody>
+    <tr th:each="user : ${user}">
+        <td th:text="${user.getFirstName()}"></td>
+        <td th:text="${user.getLastName()}"></td>
+        <td th:text="${user.getEmail()}"></td>
+    </tr>
+    <form method="get" action="/user/change">
+        <td><input type="text" name="firstName" style="width: 100%"></td>
+        <td><input type="text" name="lastName" style="width: 100%"></td>
+        <td><input type="text" name="email" style="width: 100%"></td>
+        <input type="hidden" name="id" th:value="${user.getId()}">
+        <td><input type="submit" value="change" style="width: 100%"></td>
+    </form>
+    </tbody>
+</table>
+</body>
+</html>
