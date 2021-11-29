@@ -13,17 +13,15 @@
     </tr>
     <tbody>
     <tr th:each="user : ${user}">
-        <td th:text="${user.getFirstName()}"></td>
-        <td th:text="${user.getLastName()}"></td>
-        <td th:text="${user.getEmail()}"></td>
+        <form method="get" action="/user/change">
+            <td><input type="text" name="firstName" style="width: 100%" th:value="${user.getFirstName()}"></td>
+            <td><input type="text" name="lastName" style="width: 100%" th:value="${user.getLastName()}"></td>
+            <td><input type="text" name="email" style="width: 100%" th:value="${user.getEmail()}"></td>
+            <input type="hidden" name="id" th:value="${user.getId()}">
+            <td><input type="submit" value="change" style="width: 100%"></td>
+        </form>
     </tr>
-    <form method="get" action="/user/change">
-        <td><input type="text" name="firstName" style="width: 100%"></td>
-        <td><input type="text" name="lastName" style="width: 100%"></td>
-        <td><input type="text" name="email" style="width: 100%"></td>
-        <input type="hidden" name="id" th:value="${user.getId()}">
-        <td><input type="submit" value="change" style="width: 100%"></td>
-    </form>
+
     </tbody>
 </table>
 </body>

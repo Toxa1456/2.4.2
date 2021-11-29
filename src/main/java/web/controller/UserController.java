@@ -53,7 +53,6 @@ public class UserController {
                               @RequestParam("lastName") Optional<String> lastName,
                               @RequestParam("email") Optional<String> email, @RequestParam Long id, ModelMap model) {
         User user = userService.getUserById(id);
-        System.out.println(user.getEmail() + " " + user.getFirstName() + " " + user.getLastName());
         if (!Objects.equals(firstName.orElse(null), "")){
             user.setFirstName(firstName.orElse(null));
         }
@@ -63,7 +62,6 @@ public class UserController {
         if (!Objects.equals(email.orElse(null), "")) {
             user.setEmail(email.orElse(null));
         }
-        System.out.println(user.getEmail() + " " + user.getFirstName() + " " + user.getLastName());
         userService.changeUser(user);
         model.addAttribute("Users", userService.listUsers());
         return "/User/users";
