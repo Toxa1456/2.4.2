@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Change</title>
+</head>
+<body>
+<table  border="2px black" style="width:70%">
+    <tr>
+        <th> Name </th>
+        <th> password </th>
+        <th> email </th>
+    </tr>
+    <tbody>
+    <tr th:each="user : ${user}">
+        <form method="get" action="/admin/change">
+            <td><input type="text" name="name" th:value="${user.getUsername()}" style="width: 98%"></td>
+            <td><input type="text" name="password" th:value="${user.getPassword()}" style="width: 98%"></td>
+            <td><input type="text" name="email" th:value="${user.getEmail()}" style="width: 98%"></td>
+            <input type="hidden" name="id" th:value="${user.getId()}">
+            <td><input type="submit" value="change" style="width: 100%"></td>
+        </form>
+    </tr>
+    </tbody>
+</table>
+<p></p>
+<form method="get" action="/admin/">
+    <input type="submit" value="back">
+</form>
+<p></p>
+<form action="/logout">
+    <input type="submit" value="Log Out">
+</form>
+</body>
+</html>

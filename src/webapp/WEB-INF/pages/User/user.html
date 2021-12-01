@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UserPage</title>
+</head>
+<body>
+<table border="2px black" style="width: 50%">
+    <caption> Hello <a th:text="${user.getUsername()}">!</a></caption>
+    <thead>
+    <th>Your Name </th>
+    <th> Your Password </th>
+    <th> Your email </th>
+    <th> Role </th>
+    </thead>
+    <tbody>
+    <td th:text="${user.getUsername()}"></td>
+    <td th:text="${user.getPassword()}"></td>
+    <td th:text="${user.getEmail()}"></td>
+    <td> <a th:if="${user.getRoles().size()} == 1"> User </a> <a th:if="${user.getRoles().size()} == 2"> Admin </a> </td>
+    </tbody>
+</table>
+<p><form action="/logout">
+    <input type="submit" value="Log Out">
+</form></p>
+</body>
+</html>

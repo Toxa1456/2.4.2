@@ -6,6 +6,7 @@ import web.model.User;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -48,5 +49,13 @@ public class UserDaoImp implements UserDao {
    @Transactional
    public void changeUser(User user) {
       entityManager.merge(user);
+   }
+
+   @Override
+   @Transactional
+   public User getUserByName(String name){
+      Query query = entityManager.createQuery("select user from User user join fetch user.roles where user.name = :name");
+      query.setParameter("name", name);
+      return (User) query.getSingleResult();
    }
 }
